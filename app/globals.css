@@ -1,26 +1,93 @@
 @import "tailwindcss";
 
+/*
+  MercunBerlesen — tema light premium (authority ecommerce).
+  Putih bersih + deep red + charcoal, aksen emas halus.
+  Slot gambar guna tile gelap bertujuan (premium, jelas "foto di sini").
+*/
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --bg: #ffffff;
+  --bg-soft: #f6f6f8;
+  --bg-softer: #fafafb;
+  --ink: #14141a;
+  --ink-2: #3a3a44;
+  --ink-dim: #6b6b76;
+  --red: #c8102e;
+  --red-bright: #e11d33;
+  --red-deep: #9a0c22;
+  --gold: #b8935a;
+  --gold-bright: #d4af6a;
+  --charcoal: #101014;
+  --charcoal-2: #1b1b21;
+  --line: rgba(16, 16, 20, 0.09);
+  --line-soft: rgba(16, 16, 20, 0.06);
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-bg: var(--bg);
+  --color-bg-soft: var(--bg-soft);
+  --color-bg-softer: var(--bg-softer);
+  --color-ink: var(--ink);
+  --color-ink-2: var(--ink-2);
+  --color-ink-dim: var(--ink-dim);
+  --color-red: var(--red);
+  --color-red-bright: var(--red-bright);
+  --color-red-deep: var(--red-deep);
+  --color-gold: var(--gold);
+  --color-gold-bright: var(--gold-bright);
+  --color-charcoal: var(--charcoal);
+  --color-charcoal-2: var(--charcoal-2);
+  --color-line: var(--line);
+  --color-line-soft: var(--line-soft);
+  --font-display: var(--font-poppins);
+  --font-body: var(--font-inter);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+* {
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-body), system-ui, sans-serif;
+}
+
+.font-display {
+  font-family: var(--font-display), sans-serif;
+}
+
+.text-gold-grad {
+  background: linear-gradient(100deg, #e6cf9c, var(--gold-bright) 55%, #a87e46);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* tile placeholder gambar — gelap, premium, ada glow merah halus */
+.photo-slot {
+  position: relative;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 50% 0%, rgba(200, 16, 46, 0.22), transparent 60%),
+    linear-gradient(160deg, #1b1b21, #0e0e12);
+  isolation: isolate;
+}
+.photo-slot::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(circle at 1px 1px, rgba(255, 255, 255, 0.05) 1px, transparent 0);
+  background-size: 22px 22px;
+  z-index: -1;
+}
+
+.card-shadow {
+  box-shadow: 0 1px 2px rgba(16, 16, 20, 0.04), 0 12px 32px -12px rgba(16, 16, 20, 0.14);
+}
+
+::selection {
+  background: var(--red);
+  color: #fff;
 }
